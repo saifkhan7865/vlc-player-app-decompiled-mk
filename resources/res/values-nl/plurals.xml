@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="albums_quantity">
+        <item quantity="one">1 album</item>
+        <item quantity="other">%d albums</item>
+    </plurals>
+    <plurals name="media_quantity">
+        <item quantity="one">1 mediabestand</item>
+        <item quantity="other">%d mediabestanden</item>
+    </plurals>
+    <plurals name="mediafiles_quantity">
+        <item quantity="one">1 mediabestand</item>
+        <item quantity="other">%d mediabestanden</item>
+    </plurals>
+    <plurals name="movies_quantity">
+        <item quantity="one">1 film</item>
+        <item quantity="other">%d films</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d nieuwe melding</item>
+        <item quantity="other">%d nieuwe meldingen</item>
+    </plurals>
+    <plurals name="search_found_results_quantity">
+        <item quantity="one">%d resultaat gevonden</item>
+        <item quantity="other">%d resultaten gevonden</item>
+    </plurals>
+    <plurals name="subfolders_quantity">
+        <item quantity="one">1 submap</item>
+        <item quantity="other">%d submappen</item>
+    </plurals>
+    <plurals name="track_channels_info_quantity">
+        <item quantity="one">1 kanaal\10</item>
+        <item quantity="other">%1$d kanalen\10</item>
+    </plurals>
+    <plurals name="track_quantity">
+        <item quantity="one">1 track</item>
+        <item quantity="other">%d tracks</item>
+    </plurals>
+    <plurals name="tracks_appended">
+        <item quantity="one">%d track toegevoegd</item>
+        <item quantity="other">%d tracks toegevoegd</item>
+    </plurals>
+    <plurals name="tracks_inserted">
+        <item quantity="one">%d track ingevoegd</item>
+        <item quantity="other">%d tracks ingevoegd</item>
+    </plurals>
+    <plurals name="tvshow_quantity">
+        <item quantity="one">1 serie</item>
+        <item quantity="other">%d series</item>
+    </plurals>
+    <plurals name="videos_quantity">
+        <item quantity="one">1 video</item>
+        <item quantity="other">%d video&apos;s</item>
+    </plurals>
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="albums_quantity">
+        <item quantity="one">1 album</item>
+        <item quantity="other">%d albumit</item>
+    </plurals>
+    <plurals name="media_quantity">
+        <item quantity="one">1 meediafail</item>
+        <item quantity="other">%d meediafaili</item>
+    </plurals>
+    <plurals name="mediafiles_quantity">
+        <item quantity="one">1 meediafail</item>
+        <item quantity="other">%d meediafaili</item>
+    </plurals>
+    <plurals name="movies_quantity">
+        <item quantity="one">1 film</item>
+        <item quantity="other">%d filmi</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d uus märguanne</item>
+        <item quantity="other">%d uut märguannet</item>
+    </plurals>
+    <plurals name="search_found_results_quantity">
+        <item quantity="one">Leidsin %d vaste</item>
+        <item quantity="other">Leidsin %d vastet</item>
+    </plurals>
+    <plurals name="subfolders_quantity">
+        <item quantity="one">1 alamkataloog</item>
+        <item quantity="other">%d alamkataloogi</item>
+    </plurals>
+    <plurals name="track_channels_info_quantity">
+        <item quantity="one">1 kanal\10</item>
+        <item quantity="other">%1$d kanalit\10</item>
+    </plurals>
+    <plurals name="track_quantity">
+        <item quantity="one">1 rada</item>
+        <item quantity="other">%d rada</item>
+    </plurals>
+    <plurals name="tracks_appended">
+        <item quantity="one">%d rada lisatud</item>
+        <item quantity="other">%d rada lisatud</item>
+    </plurals>
+    <plurals name="tracks_inserted">
+        <item quantity="one">%d rada sisestatud</item>
+        <item quantity="other">%d rada sisestatud</item>
+    </plurals>
+    <plurals name="tvshow_quantity">
+        <item quantity="one">1 seriaal</item>
+        <item quantity="other">%d seriaali</item>
+    </plurals>
+    <plurals name="videos_quantity">
+        <item quantity="one">1 video</item>
+        <item quantity="other">%d videot</item>
+    </plurals>
+</resources>

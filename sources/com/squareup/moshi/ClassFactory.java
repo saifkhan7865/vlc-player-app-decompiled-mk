@@ -1,0 +1,90 @@
+package com.squareup.moshi;
+
+import com.squareup.moshi.internal.Util;
+import java.io.ObjectInputStream;
+import java.io.ObjectStreamClass;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+abstract class ClassFactory<T> {
+    /* access modifiers changed from: package-private */
+    public abstract T newInstance() throws InvocationTargetException, IllegalAccessException, InstantiationException;
+
+    ClassFactory() {
+    }
+
+    public static <T> ClassFactory<T> get(final Class<?> cls) {
+        try {
+            final Constructor<?> declaredConstructor = cls.getDeclaredConstructor((Class[]) null);
+            declaredConstructor.setAccessible(true);
+            return new ClassFactory<T>() {
+                public T newInstance() throws IllegalAccessException, InvocationTargetException, InstantiationException {
+                    return declaredConstructor.newInstance((Object[]) null);
+                }
+
+                public String toString() {
+                    return cls.getName();
+                }
+            };
+        } catch (NoSuchMethodException unused) {
+            try {
+                Class<?> cls2 = Class.forName("sun.misc.Unsafe");
+                Field declaredField = cls2.getDeclaredField("theUnsafe");
+                declaredField.setAccessible(true);
+                final Object obj = declaredField.get((Object) null);
+                final Method method = cls2.getMethod("allocateInstance", new Class[]{Class.class});
+                return new ClassFactory<T>() {
+                    public T newInstance() throws InvocationTargetException, IllegalAccessException {
+                        return method.invoke(obj, new Object[]{cls});
+                    }
+
+                    public String toString() {
+                        return cls.getName();
+                    }
+                };
+            } catch (IllegalAccessException unused2) {
+                throw new AssertionError();
+            } catch (ClassNotFoundException | NoSuchFieldException | NoSuchMethodException unused3) {
+                try {
+                    Method declaredMethod = ObjectStreamClass.class.getDeclaredMethod("getConstructorId", new Class[]{Class.class});
+                    declaredMethod.setAccessible(true);
+                    final int intValue = ((Integer) declaredMethod.invoke((Object) null, new Object[]{Object.class})).intValue();
+                    final Method declaredMethod2 = ObjectStreamClass.class.getDeclaredMethod("newInstance", new Class[]{Class.class, Integer.TYPE});
+                    declaredMethod2.setAccessible(true);
+                    return new ClassFactory<T>() {
+                        public T newInstance() throws InvocationTargetException, IllegalAccessException {
+                            return declaredMethod2.invoke((Object) null, new Object[]{cls, Integer.valueOf(intValue)});
+                        }
+
+                        public String toString() {
+                            return cls.getName();
+                        }
+                    };
+                } catch (IllegalAccessException unused4) {
+                    throw new AssertionError();
+                } catch (InvocationTargetException e) {
+                    throw Util.rethrowCause(e);
+                } catch (NoSuchMethodException unused5) {
+                    try {
+                        Class<Class> cls3 = Class.class;
+                        final Method declaredMethod3 = ObjectInputStream.class.getDeclaredMethod("newInstance", new Class[]{cls3, cls3});
+                        declaredMethod3.setAccessible(true);
+                        return new ClassFactory<T>() {
+                            public T newInstance() throws InvocationTargetException, IllegalAccessException {
+                                return declaredMethod3.invoke((Object) null, new Object[]{cls, Object.class});
+                            }
+
+                            public String toString() {
+                                return cls.getName();
+                            }
+                        };
+                    } catch (Exception unused6) {
+                        throw new IllegalArgumentException("cannot construct instances of " + cls.getName());
+                    }
+                }
+            }
+        }
+    }
+}

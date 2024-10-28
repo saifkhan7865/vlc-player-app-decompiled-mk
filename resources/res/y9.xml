@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:layout_width="match_parent" android:layout_height="match_parent">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@+id/coordinator" android:tag="layout/about_authors_activity_0" android:layout_width="match_parent" android:layout_height="match_parent">
+        <include android:nextFocusLeft="@+id/ml_menu_search" android:nextFocusRight="@+id/ml_menu_search" android:nextFocusUp="@+id/ml_menu_search" android:nextFocusDown="@+id/ml_menu_search" android:nextFocusForward="@+id/ml_menu_search" layout="@layout/toolbar"/>
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/authors_list" android:paddingBottom="54dp" android:focusable="true" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior" app:layout_constraintEnd_toEndOf="0" app:layout_constraintStart_toStartOf="0" app:layout_constraintTop_toBottomOf="@+id/title"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</merge>

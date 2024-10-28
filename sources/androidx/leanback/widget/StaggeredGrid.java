@@ -1,0 +1,367 @@
+package androidx.leanback.widget;
+
+import androidx.collection.CircularArray;
+import androidx.collection.CircularIntArray;
+import androidx.leanback.widget.Grid;
+import java.io.PrintWriter;
+import org.fusesource.jansi.AnsiRenderer;
+
+abstract class StaggeredGrid extends Grid {
+    protected int mFirstIndex = -1;
+    protected CircularArray<Location> mLocations = new CircularArray<>(64);
+    protected Object mPendingItem;
+    protected int mPendingItemSize;
+
+    /* access modifiers changed from: protected */
+    public abstract boolean appendVisibleItemsWithoutCache(int i, boolean z);
+
+    /* access modifiers changed from: protected */
+    public abstract boolean prependVisibleItemsWithoutCache(int i, boolean z);
+
+    StaggeredGrid() {
+    }
+
+    public static class Location extends Grid.Location {
+        public int offset;
+        public int size;
+
+        public Location(int i, int i2, int i3) {
+            super(i);
+            this.offset = i2;
+            this.size = i3;
+        }
+    }
+
+    public final int getFirstIndex() {
+        return this.mFirstIndex;
+    }
+
+    public final int getLastIndex() {
+        return (this.mFirstIndex + this.mLocations.size()) - 1;
+    }
+
+    public final int getSize() {
+        return this.mLocations.size();
+    }
+
+    public final Location getLocation(int i) {
+        int i2 = i - this.mFirstIndex;
+        if (i2 < 0 || i2 >= this.mLocations.size()) {
+            return null;
+        }
+        return this.mLocations.get(i2);
+    }
+
+    public final void debugPrint(PrintWriter printWriter) {
+        int size = this.mLocations.size();
+        for (int i = 0; i < size; i++) {
+            printWriter.print("<" + (this.mFirstIndex + i) + AnsiRenderer.CODE_LIST_SEPARATOR + this.mLocations.get(i).row + ">");
+            printWriter.print(AnsiRenderer.CODE_TEXT_SEPARATOR);
+            printWriter.println();
+        }
+    }
+
+    /* JADX INFO: finally extract failed */
+    /* access modifiers changed from: protected */
+    public final boolean prependVisibleItems(int i, boolean z) {
+        if (this.mProvider.getCount() == 0) {
+            return false;
+        }
+        if (!z && checkPrependOverLimit(i)) {
+            return false;
+        }
+        try {
+            if (prependVisbleItemsWithCache(i, z)) {
+                this.mTmpItem[0] = null;
+                this.mPendingItem = null;
+                return true;
+            }
+            boolean prependVisibleItemsWithoutCache = prependVisibleItemsWithoutCache(i, z);
+            this.mTmpItem[0] = null;
+            this.mPendingItem = null;
+            return prependVisibleItemsWithoutCache;
+        } catch (Throwable th) {
+            this.mTmpItem[0] = null;
+            this.mPendingItem = null;
+            throw th;
+        }
+    }
+
+    /* access modifiers changed from: protected */
+    public final boolean prependVisbleItemsWithCache(int i, boolean z) {
+        int i2;
+        int i3;
+        int i4;
+        if (this.mLocations.size() == 0) {
+            return false;
+        }
+        if (this.mFirstVisibleIndex >= 0) {
+            i4 = this.mProvider.getEdge(this.mFirstVisibleIndex);
+            i3 = getLocation(this.mFirstVisibleIndex).offset;
+            i2 = this.mFirstVisibleIndex - 1;
+        } else {
+            i2 = this.mStartIndex != -1 ? this.mStartIndex : 0;
+            if (i2 > getLastIndex() || i2 < getFirstIndex() - 1) {
+                this.mLocations.clear();
+                return false;
+            } else if (i2 < getFirstIndex()) {
+                return false;
+            } else {
+                i4 = Integer.MAX_VALUE;
+                i3 = 0;
+            }
+        }
+        int max = Math.max(this.mProvider.getMinIndex(), this.mFirstIndex);
+        while (i2 >= max) {
+            Location location = getLocation(i2);
+            int i5 = location.row;
+            int createItem = this.mProvider.createItem(i2, false, this.mTmpItem, false);
+            if (createItem != location.size) {
+                this.mLocations.removeFromStart((i2 + 1) - this.mFirstIndex);
+                this.mFirstIndex = this.mFirstVisibleIndex;
+                this.mPendingItem = this.mTmpItem[0];
+                this.mPendingItemSize = createItem;
+                return false;
+            }
+            this.mFirstVisibleIndex = i2;
+            if (this.mLastVisibleIndex < 0) {
+                this.mLastVisibleIndex = i2;
+            }
+            this.mProvider.addItem(this.mTmpItem[0], i2, createItem, i5, i4 - i3);
+            if (!z && checkPrependOverLimit(i)) {
+                return true;
+            }
+            i4 = this.mProvider.getEdge(i2);
+            i3 = location.offset;
+            if (i5 == 0 && z) {
+                return true;
+            }
+            i2--;
+        }
+        return false;
+    }
+
+    /* JADX WARNING: Removed duplicated region for block: B:13:0x0039  */
+    /* Code decompiled incorrectly, please refer to instructions dump. */
+    private int calculateOffsetAfterLastItem(int r3) {
+        /*
+            r2 = this;
+            int r0 = r2.getLastIndex()
+        L_0x0004:
+            int r1 = r2.mFirstIndex
+            if (r0 < r1) goto L_0x0014
+            androidx.leanback.widget.StaggeredGrid$Location r1 = r2.getLocation((int) r0)
+            int r1 = r1.row
+            if (r1 != r3) goto L_0x0011
+            goto L_0x0018
+        L_0x0011:
+            int r0 = r0 + -1
+            goto L_0x0004
+        L_0x0014:
+            int r0 = r2.getLastIndex()
+        L_0x0018:
+            boolean r3 = r2.isReversedFlow()
+            if (r3 == 0) goto L_0x0028
+            androidx.leanback.widget.StaggeredGrid$Location r3 = r2.getLocation((int) r0)
+            int r3 = r3.size
+            int r3 = -r3
+            int r1 = r2.mSpacing
+            goto L_0x003f
+        L_0x0028:
+            androidx.leanback.widget.StaggeredGrid$Location r3 = r2.getLocation((int) r0)
+            int r3 = r3.size
+            int r1 = r2.mSpacing
+            int r3 = r3 + r1
+        L_0x0031:
+            int r0 = r0 + 1
+            int r1 = r2.getLastIndex()
+            if (r0 > r1) goto L_0x0041
+            androidx.leanback.widget.StaggeredGrid$Location r1 = r2.getLocation((int) r0)
+            int r1 = r1.offset
+        L_0x003f:
+            int r3 = r3 - r1
+            goto L_0x0031
+        L_0x0041:
+            return r3
+        */
+        throw new UnsupportedOperationException("Method not decompiled: androidx.leanback.widget.StaggeredGrid.calculateOffsetAfterLastItem(int):int");
+    }
+
+    /* access modifiers changed from: protected */
+    public final int prependVisibleItemToRow(int i, int i2, int i3) {
+        Object obj;
+        if (this.mFirstVisibleIndex < 0 || (this.mFirstVisibleIndex == getFirstIndex() && this.mFirstVisibleIndex == i + 1)) {
+            int i4 = this.mFirstIndex;
+            Location location = i4 >= 0 ? getLocation(i4) : null;
+            int edge = this.mProvider.getEdge(this.mFirstIndex);
+            Location location2 = new Location(i2, 0, 0);
+            this.mLocations.addFirst(location2);
+            if (this.mPendingItem != null) {
+                location2.size = this.mPendingItemSize;
+                obj = this.mPendingItem;
+                this.mPendingItem = null;
+            } else {
+                location2.size = this.mProvider.createItem(i, false, this.mTmpItem, false);
+                obj = this.mTmpItem[0];
+            }
+            Object obj2 = obj;
+            this.mFirstVisibleIndex = i;
+            this.mFirstIndex = i;
+            if (this.mLastVisibleIndex < 0) {
+                this.mLastVisibleIndex = i;
+            }
+            int i5 = !this.mReversedFlow ? i3 - location2.size : i3 + location2.size;
+            if (location != null) {
+                location.offset = edge - i5;
+            }
+            this.mProvider.addItem(obj2, i, location2.size, i2, i5);
+            return location2.size;
+        }
+        throw new IllegalStateException();
+    }
+
+    /* JADX INFO: finally extract failed */
+    /* access modifiers changed from: protected */
+    public final boolean appendVisibleItems(int i, boolean z) {
+        if (this.mProvider.getCount() == 0) {
+            return false;
+        }
+        if (!z && checkAppendOverLimit(i)) {
+            return false;
+        }
+        try {
+            if (appendVisbleItemsWithCache(i, z)) {
+                this.mTmpItem[0] = null;
+                this.mPendingItem = null;
+                return true;
+            }
+            boolean appendVisibleItemsWithoutCache = appendVisibleItemsWithoutCache(i, z);
+            this.mTmpItem[0] = null;
+            this.mPendingItem = null;
+            return appendVisibleItemsWithoutCache;
+        } catch (Throwable th) {
+            this.mTmpItem[0] = null;
+            this.mPendingItem = null;
+            throw th;
+        }
+    }
+
+    /* access modifiers changed from: protected */
+    public final boolean appendVisbleItemsWithCache(int i, boolean z) {
+        int i2;
+        int i3;
+        if (this.mLocations.size() == 0) {
+            return false;
+        }
+        int count = this.mProvider.getCount();
+        if (this.mLastVisibleIndex >= 0) {
+            i3 = this.mLastVisibleIndex + 1;
+            i2 = this.mProvider.getEdge(this.mLastVisibleIndex);
+        } else {
+            i3 = this.mStartIndex != -1 ? this.mStartIndex : 0;
+            if (i3 > getLastIndex() + 1 || i3 < getFirstIndex()) {
+                this.mLocations.clear();
+                return false;
+            } else if (i3 > getLastIndex()) {
+                return false;
+            } else {
+                i2 = Integer.MAX_VALUE;
+            }
+        }
+        int lastIndex = getLastIndex();
+        while (i3 < count && i3 <= lastIndex) {
+            Location location = getLocation(i3);
+            if (i2 != Integer.MAX_VALUE) {
+                i2 += location.offset;
+            }
+            int i4 = location.row;
+            int createItem = this.mProvider.createItem(i3, true, this.mTmpItem, false);
+            if (createItem != location.size) {
+                location.size = createItem;
+                this.mLocations.removeFromEnd(lastIndex - i3);
+                lastIndex = i3;
+            }
+            this.mLastVisibleIndex = i3;
+            if (this.mFirstVisibleIndex < 0) {
+                this.mFirstVisibleIndex = i3;
+            }
+            this.mProvider.addItem(this.mTmpItem[0], i3, createItem, i4, i2);
+            if (!z && checkAppendOverLimit(i)) {
+                return true;
+            }
+            if (i2 == Integer.MAX_VALUE) {
+                i2 = this.mProvider.getEdge(i3);
+            }
+            if (i4 == this.mNumRows - 1 && z) {
+                return true;
+            }
+            i3++;
+        }
+        return false;
+    }
+
+    /* access modifiers changed from: protected */
+    public final int appendVisibleItemToRow(int i, int i2, int i3) {
+        int i4;
+        Object obj;
+        if (this.mLastVisibleIndex < 0 || (this.mLastVisibleIndex == getLastIndex() && this.mLastVisibleIndex == i - 1)) {
+            if (this.mLastVisibleIndex < 0) {
+                i4 = (this.mLocations.size() <= 0 || i != getLastIndex() + 1) ? 0 : calculateOffsetAfterLastItem(i2);
+            } else {
+                i4 = i3 - this.mProvider.getEdge(this.mLastVisibleIndex);
+            }
+            Location location = new Location(i2, i4, 0);
+            this.mLocations.addLast(location);
+            if (this.mPendingItem != null) {
+                location.size = this.mPendingItemSize;
+                obj = this.mPendingItem;
+                this.mPendingItem = null;
+            } else {
+                location.size = this.mProvider.createItem(i, true, this.mTmpItem, false);
+                obj = this.mTmpItem[0];
+            }
+            Object obj2 = obj;
+            if (this.mLocations.size() == 1) {
+                this.mLastVisibleIndex = i;
+                this.mFirstVisibleIndex = i;
+                this.mFirstIndex = i;
+            } else if (this.mLastVisibleIndex < 0) {
+                this.mLastVisibleIndex = i;
+                this.mFirstVisibleIndex = i;
+            } else {
+                this.mLastVisibleIndex++;
+            }
+            this.mProvider.addItem(obj2, i, location.size, i2, i3);
+            return location.size;
+        }
+        throw new IllegalStateException();
+    }
+
+    public final CircularIntArray[] getItemPositionsInRows(int i, int i2) {
+        for (int i3 = 0; i3 < this.mNumRows; i3++) {
+            this.mTmpItemPositionsInRows[i3].clear();
+        }
+        if (i >= 0) {
+            while (i <= i2) {
+                CircularIntArray circularIntArray = this.mTmpItemPositionsInRows[getLocation(i).row];
+                if (circularIntArray.size() <= 0 || circularIntArray.getLast() != i - 1) {
+                    circularIntArray.addLast(i);
+                    circularIntArray.addLast(i);
+                } else {
+                    circularIntArray.popLast();
+                    circularIntArray.addLast(i);
+                }
+                i++;
+            }
+        }
+        return this.mTmpItemPositionsInRows;
+    }
+
+    public void invalidateItemsAfter(int i) {
+        super.invalidateItemsAfter(i);
+        this.mLocations.removeFromEnd((getLastIndex() - i) + 1);
+        if (this.mLocations.size() == 0) {
+            this.mFirstIndex = -1;
+        }
+    }
+}

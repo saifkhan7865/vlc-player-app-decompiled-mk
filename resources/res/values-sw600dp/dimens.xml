@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="abc_action_bar_content_inset_material">24dp</dimen>
+    <dimen name="abc_action_bar_content_inset_with_nav">80dp</dimen>
+    <dimen name="abc_action_bar_default_height_material">64dp</dimen>
+    <dimen name="abc_action_bar_default_padding_end_material">8dp</dimen>
+    <dimen name="abc_action_bar_default_padding_start_material">8dp</dimen>
+    <dimen name="abc_config_prefDialogWidth">580dp</dimen>
+    <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
+    <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
+    <dimen name="audio_player_cover_margin">16dp</dimen>
+    <dimen name="audioplayer_controls_margin">16dp</dimen>
+    <dimen name="design_navigation_max_width">320dp</dimen>
+    <dimen name="design_snackbar_action_inline_max_width">0dp</dimen>
+    <dimen name="design_snackbar_background_corner_radius">2dp</dimen>
+    <dimen name="design_snackbar_extra_spacing_horizontal">24dp</dimen>
+    <dimen name="design_snackbar_max_width">576dp</dimen>
+    <dimen name="design_snackbar_min_width">320dp</dimen>
+    <dimen name="design_snackbar_padding_vertical_2lines">@dimen/design_snackbar_padding_vertical</dimen>
+    <dimen name="design_tab_scrollable_min_width">160dp</dimen>
+    <dimen name="dialog_sd_wisard_height">576dp</dimen>
+    <dimen name="dialog_sd_wisard_width">448dp</dimen>
+    <dimen name="file_picker_width">450dp</dimen>
+    <dimen name="grid_card_subtitle_text_size">12sp</dimen>
+    <dimen name="grid_card_thumb_height">150dp</dimen>
+    <dimen name="grid_card_thumb_width">250dp</dimen>
+    <dimen name="grid_card_title_text_size">16sp</dimen>
+    <dimen name="grid_card_vertical_spacing">10dp</dimen>
+    <dimen name="mtrl_bottomappbar_height">64dp</dimen>
+    <dimen name="mtrl_toolbar_default_height">64dp</dimen>
+    <dimen name="navigation_margin">72dp</dimen>
+    <dimen name="overlay_margin">10dp</dimen>
+    <dimen name="video_pip_height">288dp</dimen>
+    <dimen name="video_pip_width">512dp</dimen>
+</resources>

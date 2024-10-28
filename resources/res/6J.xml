@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:layout_width="192dp" android:layout_height="192dp">
+    <ImageView android:id="@+id/player_container_background" android:layout_width="128dp" android:layout_height="128dp" android:src="@drawable/widget_round_white" android:layout_centerInParent="true" android:contentDescription="@null"/>
+    <ImageView android:id="@+id/cover" android:layout_width="128dp" android:layout_height="128dp" android:layout_centerInParent="true"/>
+    <ImageView android:id="@+id/app_icon" android:layout_width="72dp" android:layout_height="72dp" android:src="@drawable/ic_widget_icon" android:layout_centerInParent="true" android:contentDescription="@string/open_vlc"/>
+    <ImageView android:id="@+id/progress_round" android:layout_width="128dp" android:layout_height="128dp" android:layout_centerInParent="true"/>
+    <ImageView android:id="@+id/play_pause_background" android:layout_width="52dp" android:layout_height="52dp" android:layout_marginTop="-32dp" android:src="@drawable/widget_rectangle_background" android:layout_below="@+id/cover" android:layout_alignStart="@+id/cover"/>
+    <ImageView android:id="@+id/play_pause" android:background="@drawable/widget_touch_background" android:padding="6dp" android:layout_width="52dp" android:layout_height="52dp" android:layout_marginTop="-32dp" android:src="@drawable/ic_widget_play" android:layout_below="@+id/cover" android:layout_alignStart="@+id/cover"/>
+    <ImageView android:id="@+id/widget_configure" android:background="@drawable/widget_touch_background" android:layout_width="48dp" android:layout_height="48dp" android:scaleType="center" android:layout_alignTop="@+id/player_container_background" android:layout_alignRight="@+id/player_container_background" android:contentDescription="@string/configure_widget"/>
+</RelativeLayout>

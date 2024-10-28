@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.LeanbackBase">
+        <item name="android:windowOverscan">true</item>
+        <item name="defaultBrandColor">@color/lb_default_brand_color</item>
+        <item name="defaultBrandColorDark">@color/lb_default_brand_color_dark</item>
+        <item name="guidedStepTheme">@style/Theme.Leanback.GuidedStep</item>
+        <item name="playbackControlsIconHighlightColor">@color/lb_playback_icon_highlight_no_theme</item>
+        <item name="playbackProgressPrimaryColor">@color/lb_playback_progress_color_no_theme</item>
+    </style>
+    <style name="Theme.VLC">
+    </style>
+    <style name="Theme.VLC.19">
+    </style>
+    <style name="Theme.VLC.Black.19">
+    </style>
+    <style name="Theme.VLC.NoStatus">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+    <style name="Theme.VLC.Transparent.NoUI">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+</resources>

@@ -1,0 +1,33 @@
+package org.videolan.moviepedia.provider;
+
+import kotlin.Metadata;
+import kotlin.coroutines.Continuation;
+import kotlin.coroutines.jvm.internal.ContinuationImpl;
+import kotlin.coroutines.jvm.internal.DebugMetadata;
+import org.videolan.moviepedia.database.models.MediaMetadataWithImages;
+
+@Metadata(k = 3, mv = {1, 9, 0}, xi = 48)
+@DebugMetadata(c = "org.videolan.moviepedia.provider.MediaScrapingTvshowProvider", f = "MediaScrapingTvshowProvider.kt", i = {0, 0, 0}, l = {166}, m = "getAllSeasons", n = {"this", "seasons", "episode"}, s = {"L$0", "L$1", "L$4"})
+/* compiled from: MediaScrapingTvshowProvider.kt */
+final class MediaScrapingTvshowProvider$getAllSeasons$1 extends ContinuationImpl {
+    Object L$0;
+    Object L$1;
+    Object L$2;
+    Object L$3;
+    Object L$4;
+    int label;
+    /* synthetic */ Object result;
+    final /* synthetic */ MediaScrapingTvshowProvider this$0;
+
+    /* JADX INFO: super call moved to the top of the method (can break code semantics) */
+    MediaScrapingTvshowProvider$getAllSeasons$1(MediaScrapingTvshowProvider mediaScrapingTvshowProvider, Continuation<? super MediaScrapingTvshowProvider$getAllSeasons$1> continuation) {
+        super(continuation);
+        this.this$0 = mediaScrapingTvshowProvider;
+    }
+
+    public final Object invokeSuspend(Object obj) {
+        this.result = obj;
+        this.label |= Integer.MIN_VALUE;
+        return this.this$0.getAllSeasons((MediaMetadataWithImages) null, this);
+    }
+}

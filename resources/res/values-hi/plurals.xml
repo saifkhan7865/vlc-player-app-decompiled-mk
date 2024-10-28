@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="albums_quantity">
+        <item quantity="one">1 एल्बम</item>
+        <item quantity="other">%d एल्बम</item>
+    </plurals>
+    <plurals name="media_quantity">
+        <item quantity="one">1 मीडिया</item>
+        <item quantity="other">%d मीडिया</item>
+    </plurals>
+    <plurals name="mediafiles_quantity">
+        <item quantity="one">1 मीडिया दस्तावेज</item>
+        <item quantity="other">%d मीडिया दस्तावेजे</item>
+    </plurals>
+    <plurals name="movies_quantity">
+        <item quantity="one">1 सिनेमा</item>
+        <item quantity="other">%d सिनेमा</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d नई सूचनाएं</item>
+        <item quantity="other">%d नई सूचनाएं</item>
+    </plurals>
+    <plurals name="search_found_results_quantity">
+        <item quantity="one">%d परिणाम मिल गया</item>
+        <item quantity="other">%d परिणाम मिले</item>
+    </plurals>
+    <plurals name="subfolders_quantity">
+        <item quantity="one">1 सबफ़ोल्डर</item>
+        <item quantity="other">%d सबफ़ोल्डर</item>
+    </plurals>
+    <plurals name="track_channels_info_quantity">
+        <item quantity="one">1 चैनल\10</item>
+        <item quantity="other">%1$d चैनल\10</item>
+    </plurals>
+    <plurals name="track_quantity">
+        <item quantity="one">1 ट्रैक</item>
+        <item quantity="other">%d ट्रैक</item>
+    </plurals>
+    <plurals name="tvshow_quantity">
+        <item quantity="one">1 टीवी शो</item>
+        <item quantity="other">%d टीवी शो</item>
+    </plurals>
+    <plurals name="videos_quantity">
+        <item quantity="one">1 वीडियो</item>
+        <item quantity="other">%d वीडियो</item>
+    </plurals>
+</resources>

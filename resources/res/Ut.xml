@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <item android:icon="@drawable/ic_pin_lock" android:id="@+id/pin_relocked" android:visible="false" android:orderInCategory="0" android:title="@string/lock_with_pin" app:showAsAction="always"/>
+    <item android:icon="@drawable/ic_search" android:id="@+id/ml_menu_filter" android:orderInCategory="1" android:title="@string/searchable_hint" app:actionViewClass="androidx.appcompat.widget.SearchView" app:showAsAction="never|always|collapseActionView"/>
+    <item android:icon="@drawable/ic_sort" android:id="@+id/ml_menu_sortby" android:visible="false" android:orderInCategory="2" android:title="@string/sortby" android:contentDescription="@string/sortby" app:showAsAction="never|ifRoom|collapseActionView">
+        <menu>
+            <item android:id="@+id/ml_menu_sortby_track" android:orderInCategory="2" android:title="@string/sortby_track"/>
+            <item android:id="@+id/ml_menu_sortby_filename" android:orderInCategory="2" android:title="@string/sortby_filename"/>
+            <item android:id="@+id/ml_menu_sortby_artist_name" android:visible="false" android:orderInCategory="2" android:title="@string/sortby_artist_name"/>
+            <item android:id="@+id/ml_menu_sortby_album_name" android:visible="false" android:orderInCategory="2" android:title="@string/sortby_album_name"/>
+            <item android:id="@+id/ml_menu_sortby_length" android:visible="false" android:orderInCategory="2" android:title="@string/sortby_length"/>
+            <item android:id="@+id/ml_menu_sortby_date" android:visible="false" android:orderInCategory="2" android:title="@string/sortby_date"/>
+            <item android:id="@+id/ml_menu_sortby_last_modified" android:visible="false" android:orderInCategory="2" android:title="@string/sortby_last_modified_date"/>
+        </menu>
+    </item>
+    <item android:id="@+id/ml_menu_albums_show_track_numbers" android:visible="false" android:orderInCategory="3" android:title="@string/albums_show_track_numbers" android:checkable="true" app:showAsAction="never"/>
+</menu>

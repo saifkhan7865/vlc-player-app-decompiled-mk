@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:height="36dp" android:width="36dp" android:viewportWidth="48" android:viewportHeight="48">
+    <path android:fillColor="@color/tv_menu_selection" android:pathData="M18,12A12,12 0,0 0,6 24,12 12,0 0,0 18,36v2c0,0.8901 1.0687,1.333 1.707,0.707l4,-4c0.3904,-0.3905 0.3904,-1.0236 0,-1.4141l-4,-4C19.0688,28.667 17.9993,29.1097 18,30v2a8,8 0,0 1,-8 -8,8 8,0 0,1 8,-8h6v-4zM28,12v4h14v-4zM28,22v4h14v-4zM28,32v4h14v-4z" android:strokeColor="#00000000" android:strokeWidth="2.2563" android:strokeLineCap="round" android:strokeLineJoin="bevel" android:strokeAlpha="1" android:fillAlpha="1"/>
+</vector>

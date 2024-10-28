@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:orientation="vertical" android:tag="layout/search_activity_0" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:background="?attr/background_default" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center_vertical" android:tag="binding_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:layout_marginEnd="16dp" app:srcCompat="@drawable/ic_arrow_back"/>
+        <com.google.android.material.textfield.TextInputLayout android:id="@+id/search_edit_layout" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="16dp" app:endIconMode="2">
+            <EditText android:layout_gravity="center_vertical" android:id="@+id/search_edit_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/search_hint" android:inputType="textFilter" android:imeOptions="actionSearch"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView android:tag="binding_2" android:background="?attr/background_default" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@+id/results_container" android:paddingTop="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/Result.Title" android:tag="binding_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:layout_marginBottom="8dp" android:text="@string/videos" android:layout_marginStart="16dp"/>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/others_results" android:tag="binding_4" android:background="?attr/background_default" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp"/>
+            <View android:tag="binding_5" android:background="?attr/default_divider" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="16dp" android:layout_marginBottom="4dp"/>
+            <TextView android:textAppearance="@style/Result.Title" android:tag="binding_6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="@string/tracks" android:layout_marginStart="16dp"/>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/songs_results" android:tag="binding_7" android:background="?attr/background_default" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp"/>
+            <View android:tag="binding_8" android:background="?attr/default_divider" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="16dp" android:layout_marginBottom="4dp"/>
+            <TextView android:textAppearance="@style/Result.Title" android:tag="binding_9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="@string/albums" android:layout_marginStart="16dp"/>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/albums_results" android:tag="binding_10" android:background="?attr/background_default" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <View android:tag="binding_11" android:background="?attr/default_divider" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="16dp" android:layout_marginBottom="4dp"/>
+            <TextView android:textAppearance="@style/Result.Title" android:tag="binding_12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="@string/artists" android:layout_marginStart="16dp"/>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/artists_results" android:tag="binding_13" android:background="?attr/background_default" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp"/>
+            <View android:tag="binding_14" android:background="?attr/default_divider" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="16dp" android:layout_marginBottom="4dp"/>
+            <TextView android:textAppearance="@style/Result.Title" android:tag="binding_15" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="@string/genres" android:layout_marginStart="16dp"/>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/genres_results" android:tag="binding_16" android:background="?attr/background_default" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp"/>
+            <View android:tag="binding_17" android:background="?attr/default_divider" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="16dp" android:layout_marginBottom="4dp"/>
+            <TextView android:textAppearance="@style/Result.Title" android:tag="binding_18" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="@string/playlists" android:layout_marginStart="16dp"/>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/playlists_results" android:tag="binding_19" android:background="?attr/background_default" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <TextView android:textAppearance="@style/Result.Title" android:gravity="center" android:tag="binding_20" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/search_no_result"/>
+</LinearLayout>

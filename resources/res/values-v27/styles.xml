@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.VLC">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="?0x10104e0">true</item>
+        <item name="?0x101056c">true</item>
+    </style>
+    <style name="Theme.VLC.Black">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:navigationBarColor">@color/grey875</item>
+        <item name="?0x10104e0">false</item>
+    </style>
+    <style name="Theme.VLC.Onboarding">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/onboarding_grey</item>
+        <item name="android:navigationBarColor">@color/onboarding_grey</item>
+        <item name="?0x10104e0">false</item>
+    </style>
+    <style name="Theme.VLC.PickerDialog.Dark">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:navigationBarColor">@color/grey875</item>
+        <item name="?0x10104e0">false</item>
+    </style>
+    <style name="Theme.VLC.PickerDialog.Light">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="?0x10104e0">true</item>
+        <item name="?0x101056c">true</item>
+    </style>
+    <style name="VLCDialogButton">
+    </style>
+</resources>
